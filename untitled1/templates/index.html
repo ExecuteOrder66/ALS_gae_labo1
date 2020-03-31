@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consumo</title>
+    <script>
+        function validation(){
+            let toret = true;
+            let kms = document.getElementById("kmsInput").value;
+            let tiempo= document.getElementById("tempInput").value;
+            let consumoMedio = document.getElementById("consumoInput").value;
+
+            if(Number.isNaN(kms) || Number.isNaN(tiempo) || Number.isNaN(consumoMedio)){
+                alert("Detectado campo no numérico, por favor introduzca solo numeros");
+                toret=false;
+            }else{
+                if(tiempo <= 0){
+                    alert("El tiempo no puede ser 0");
+                    toret=false;
+                }
+            }
+
+            return toret;
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Consumo</h1>
+
+    <form
+        action="/consumo"
+        method="post"
+        onsubmit="return validation()">
+        <label for="kmsInput">Kilómetros</label>
+        <input type="number" id="kmsInput" name="kmsInput"/>
+        <label for="tempInput">Tiempo(en horas)</label>
+        <input type="number" id="tempInput" name="tempInput"/>
+        <label for="consumoInput">Consumo Medio(litro/100km)</label>
+        <input type="number" id="consumoInput" name="consumoInput">
+
+        <input type="submit" value="consumo"/>
+    </form>
+</body>
+</html>
